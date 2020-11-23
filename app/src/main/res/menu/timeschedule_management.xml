@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/add_subject"
+        android:title="과목 추가"/>
+    <item
+        android:id="@+id/add_belong"
+        android:title="소속 추가"/>
+    <item
+        android:id="@+id/add_division"
+        android:title="구분 추가"/>
+</menu>
