@@ -47,6 +47,8 @@ class PublicCalenderList :AppCompatActivity(){
         val actionBar = getSupportActionBar()
         actionBar!!.setDisplayShowTitleEnabled(false)
 
+        publicCalendars.add(PublicCalenderData("bubble1010", "1", "모바일 시스템(7)", "2"))
+
         val adapter =
             PublicCalendarRecyclerviewAdapter(
                 this,

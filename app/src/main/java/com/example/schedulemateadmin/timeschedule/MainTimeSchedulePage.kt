@@ -7,6 +7,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.schedulemateadmin.R
 import com.example.schedulemateadmin.declare.TimeScheduleRecyclerviewAdapter
@@ -54,6 +55,8 @@ class MainTimeSchedulePage : AppCompatActivity(){
             )
         timeschedule_recyclerview.adapter = adapter
         adapter.notifyDataSetChanged()
+
+        timeschedule_recyclerview.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
 
         val layoutManager = LinearLayoutManager(this)
         timeschedule_recyclerview.layoutManager = layoutManager

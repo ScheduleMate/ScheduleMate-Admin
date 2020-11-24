@@ -48,13 +48,29 @@ class CommentList :AppCompatActivity(){
         comments.add(
             CommentData(
                 "bubble1010",
-                "모바일 시스템",
+                "모바일 시스템(7)",
                 "1",
                 "0"
             )
         )
 
+        comments.add(
+            CommentData(
+                "gildonghong",
+                "클라우드 컴퓨팅(a)",
+                "0",
+                "0"
+            )
+        )
 
+        comments.add(
+            CommentData(
+                "chulsu",
+                "클라우드 컴퓨팅(a)",
+                "1",
+                "1"
+            )
+        )
         val adapter =
             CommentRecyclerviewAdapter(
                 this,

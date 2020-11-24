@@ -26,6 +26,9 @@ class TimeScheduleList : AppCompatActivity(){
                 startActivity(Intent(this, AddBelong::class.java))
             R.id.add_division-> // 구분 추가
                 startActivity(Intent(this, AddDivision::class.java))
+            android.R.id.home->{
+                onBackPressed()
+            }
         }
         return super.onOptionsItemSelected(item)
     }
@@ -37,6 +40,8 @@ class TimeScheduleList : AppCompatActivity(){
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
         val actionBar = getSupportActionBar()
         actionBar!!.setDisplayShowTitleEnabled(false)
 
