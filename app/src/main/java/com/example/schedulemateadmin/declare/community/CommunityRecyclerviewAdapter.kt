@@ -33,7 +33,7 @@ class CommunityRecyclerviewAdapter(
                         var nickname = community.child("writerNickName").value.toString()
                         var className = community.child("class").value.toString()
                         var time = community.child("time").value.toString()
-                        var title = community.child("title").value.toString()
+                        var title = community.child("classTitle").value.toString()
                         var reason = community.child("reason").value.toString()
                         var lectureKeyData = lectureKey.key.toString()
                         var communityKeyData = community.key.toString()

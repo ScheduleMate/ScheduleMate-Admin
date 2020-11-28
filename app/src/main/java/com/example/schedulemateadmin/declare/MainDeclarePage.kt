@@ -11,7 +11,7 @@ import androidx.appcompat.widget.Toolbar
 import com.example.schedulemateadmin.R
 import com.example.schedulemateadmin.declare.comment.CommentList
 import com.example.schedulemateadmin.declare.community.CommunityList
-import com.example.schedulemateadmin.declare.publicCalendar.PublicCalenderList
+import com.example.schedulemateadmin.declare.publicSchedule.PublicScheduleList
 import com.example.schedulemateadmin.timeschedule.MainTimeSchedulePage
 import kotlinx.android.synthetic.main.main_declare_page.*
 
@@ -59,7 +59,7 @@ class MainDeclarePage : AppCompatActivity(){
             moveTo(Intent(this, CommunityList::class.java))
         }
         public_calender.setOnClickListener {
-            moveTo(Intent(this, PublicCalenderList::class.java))
+            moveTo(Intent(this, PublicScheduleList::class.java))
         }
     }
     fun moveTo(intent:Intent){

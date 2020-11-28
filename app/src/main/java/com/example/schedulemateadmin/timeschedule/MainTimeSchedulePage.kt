@@ -10,6 +10,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.schedulemateadmin.R
+import com.example.schedulemateadmin.declare.MainDeclarePage
 import com.example.schedulemateadmin.declare.MainTimeSchedulePageRecyclerviewAdapter
 import kotlinx.android.synthetic.main.main_timeschedule_page.*
 
@@ -28,11 +29,7 @@ class MainTimeSchedulePage : AppCompatActivity(){
             R.id.timeSchedule ->
                 moveTo(Intent(this, MainTimeSchedulePage::class.java))
             R.id.declare ->{
-                val intent = Intent()
-                intent.setClass(this,
-                    com.example.schedulemateadmin.declare.MainDeclarePage::class.java)
-                moveTo(intent)
-
+                moveTo(Intent(this, MainDeclarePage::class.java))
             }
         }
         return super.onOptionsItemSelected(item)

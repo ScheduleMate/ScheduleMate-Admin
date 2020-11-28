@@ -84,7 +84,7 @@ class CommunityContents : AppCompatActivity(){
                 "삭제",
                 { dialog: DialogInterface?, which: Int ->
                     community.removeValue()
-                    root.child("/declare/community/").child(lecture.key.toString()).child(intent.getStringExtra("communityKeyData")).removeValue()
+                    root.child("$university/declare/community/").child(lecture.key.toString()).child(intent.getStringExtra("communityKeyData")).removeValue()
                     moveTo(Intent(this, CommunityList::class.java))
                     Toast.makeText(applicationContext, "삭제가 완료되었습니다.", Toast.LENGTH_LONG).show()
                 }

@@ -20,6 +20,8 @@ class CommentRecyclerviewAdapter(
     val university: String
 ) :
     RecyclerView.Adapter<CommentRecyclerviewAdapter.ViewHolder>() {
+    var data = CommentData("", "", "", "", "", "", "", "")
+
     init {
         var root = FirebaseDatabase.getInstance().reference
         var commentPath = root.child("$university/declare/comment")
@@ -32,27 +34,18 @@ class CommentRecyclerviewAdapter(
                     var commentKeyData = commentKey.key.toString()
                     var nickname = commentKey.child("writerNickName").value.toString()
                     var time = commentKey.child("time").value.toString()
-                    var title = commentKey.child("title").value.toString()
+                    var title = commentKey.child("classTitle").value.toString()
                     var lecture = commentKey.child("class").value.toString()
                     var lectureKey = commentKey.child("classKey").value.toString()
                     var communityKey = commentKey.child("communityKey").value.toString()
                     var reason = commentKey.child("reason").value.toString()
-                    comments.add(
-                        CommentData(
-                            nickname,
-                            "$title($lecture)",
-                            time,
-                            reason,
-                            commentKeyData,
-                            lectureKey,
-                            communityKey,
-                            title
-                        )
-                    )
+
+                    comments.add(CommentData(nickname, "$title($lecture)", time, reason, commentKeyData, lectureKey, communityKey, title))
                     notifyDataSetChanged()
                 }
             }
         })
+
     }
 
     override fun getItemCount(): Int = comments.size

@@ -20,10 +20,10 @@
         <activity android:name=".declare.MainDeclarePage"/>
         <activity android:name=".declare.comment.CommentList"/>
         <activity android:name=".declare.community.CommunityList"/>
-        <activity android:name=".declare.publicCalendar.PublicCalenderList"/>
+        <activity android:name=".declare.publicSchedule.PublicScheduleList"/>
         <activity android:name=".declare.comment.CommentContents"/>
         <activity android:name=".declare.community.CommunityContents"/>
-        <activity android:name=".declare.publicCalendar.PublicCalendarContents"/>
+        <activity android:name=".declare.publicSchedule.PublicScheduleContents"/>
         <activity android:name=".timeschedule.MainTimeSchedulePage"
             android:windowSoftInputMode="adjustResize"/>
         <activity android:name=".timeschedule.TimeScheduleList"/>

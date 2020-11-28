@@ -105,8 +105,8 @@
         android:background="@drawable/contents_textview"
         android:layout_marginHorizontal="15dp"
         android:textColor="@android:color/black"
-        android:layout_marginBottom="20dp"        android:padding="10dp"
-        />
+        android:layout_marginBottom="20dp"
+        android:padding="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
