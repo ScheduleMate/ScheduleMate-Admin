@@ -19,17 +19,20 @@
         <activity android:name=".SignIn"/>
         <activity android:name=".declare.MainDeclarePage"/>
         <activity android:name=".declare.comment.CommentList"/>
-        <activity android:name=".declare.community.CommnunityList"/>
+        <activity android:name=".declare.community.CommunityList"/>
         <activity android:name=".declare.publicCalendar.PublicCalenderList"/>
         <activity android:name=".declare.comment.CommentContents"/>
         <activity android:name=".declare.community.CommunityContents"/>
         <activity android:name=".declare.publicCalendar.PublicCalendarContents"/>
-        <activity android:name=".timeschedule.MainTimeSchedulePage"/>
+        <activity android:name=".timeschedule.MainTimeSchedulePage"
+            android:windowSoftInputMode="adjustResize"/>
         <activity android:name=".timeschedule.TimeScheduleList"/>
         <activity android:name=".timeschedule.AddBelong"/>
         <activity android:name=".timeschedule.AddDivision"/>
         <activity android:name=".timeschedule.AddLecture"/>
         <activity android:name=".timeschedule.AddSubject"/>
+        <activity android:name=".timeschedule.AddSemester"/>
+        <activity android:name=".SelectUniversity"/>
     </application>
 
 </manifest>

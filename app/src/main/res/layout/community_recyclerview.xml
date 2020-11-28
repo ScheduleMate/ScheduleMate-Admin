@@ -8,14 +8,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="8">
+        android:weightSum="3">
 
         <TextView
             android:id="@+id/nickname"
             android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="3"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:gravity="center"
+            android:paddingVertical="5dp"
             android:textSize="13sp"
             android:background="@drawable/contents_list"
             android:textColor="@android:color/black" />
@@ -23,19 +24,21 @@
         <TextView
             android:id="@+id/lecture"
             android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="3"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:gravity="center"
+            android:paddingVertical="5dp"
             android:textSize="13sp"
             android:background="@drawable/contents_list"
             android:textColor="@android:color/black" />
 
         <TextView
-            android:id="@+id/community_index"
+            android:id="@+id/time"
             android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="2"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:gravity="center"
+            android:paddingVertical="5dp"
             android:textSize="13sp"
             android:background="@drawable/contents_list"
             android:textColor="@android:color/black" />

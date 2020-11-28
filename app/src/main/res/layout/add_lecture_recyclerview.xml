@@ -3,8 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="30dp"
     android:orientation="horizontal"
-    android:weightSum="6.5">
+    android:weightSum="9.5">
     <TextView
+        android:id="@+id/lecture_name"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1.5"
@@ -13,6 +14,7 @@
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/lecture_time"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="3"
@@ -21,6 +23,16 @@
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/classroom"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:background="@drawable/contents_list"
+        android:gravity="center"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/professor"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="2"

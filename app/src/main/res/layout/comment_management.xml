@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:background="#6298FF">
         <TextView
+            android:id="@+id/toolbarTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="댓글 관리"
@@ -24,14 +25,14 @@
         android:orientation="horizontal"
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="10dp"
-        android:weightSum="6">
+        android:weightSum="3">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:gravity="center"
             android:text="닉네임"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:background="@drawable/top"
             android:textColor="@android:color/black"
             android:textSize="12sp"
@@ -42,7 +43,7 @@
             android:layout_height="40dp"
             android:gravity="center"
             android:text="강의(분반)"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:background="@drawable/top"
             android:textColor="@android:color/black"
             android:textSize="12sp"
@@ -52,20 +53,9 @@
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:gravity="center"
-            android:text="게시물"
+            android:text="신고 시간"
             android:layout_weight="1"
             android:background="@drawable/top"
-            android:textColor="@android:color/black"
-            android:textSize="12sp"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:background="@drawable/top"
-            android:gravity="center"
-            android:text="댓글"
-            android:layout_weight="1"
             android:textColor="@android:color/black"
             android:textSize="12sp"
             android:textStyle="bold" />

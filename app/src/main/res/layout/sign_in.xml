@@ -82,6 +82,7 @@
            <EditText
                android:id="@+id/password"
                android:hint="Password"
+               android:password="true"
                android:layout_width="270dp"
                android:layout_height="60dp"
                android:layout_marginLeft="10dp"

@@ -10,11 +10,12 @@ import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.schedulemateadmin.R
-import com.example.schedulemateadmin.declare.TimeScheduleRecyclerviewAdapter
+import com.example.schedulemateadmin.declare.MainTimeSchedulePageRecyclerviewAdapter
 import kotlinx.android.synthetic.main.main_timeschedule_page.*
 
 class MainTimeSchedulePage : AppCompatActivity(){
     var timeSchedules = ArrayList<TimeScheduleData>()
+    lateinit var university: String
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         var menuInflater : MenuInflater = getMenuInflater()
         menuInflater.inflate(R.menu.management, menu)
@@ -25,12 +26,12 @@ class MainTimeSchedulePage : AppCompatActivity(){
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.timeSchedule ->
-                startActivity(Intent(this, MainTimeSchedulePage::class.java))
+                moveTo(Intent(this, MainTimeSchedulePage::class.java))
             R.id.declare ->{
                 val intent = Intent()
                 intent.setClass(this,
                     com.example.schedulemateadmin.declare.MainDeclarePage::class.java)
-                startActivity(intent)
+                moveTo(intent)
 
             }
         }
@@ -40,25 +41,31 @@ class MainTimeSchedulePage : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_timeschedule_page)
 
+        university = intent.getStringExtra("university")
+
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         val actionBar = getSupportActionBar()
         actionBar!!.setDisplayShowTitleEnabled(false)
-
-        timeSchedules.add(TimeScheduleData("2020년 2학기"))
-        timeSchedules.add(TimeScheduleData("2020년 1학기"))
-
+        toolbarTitle.text = "학기목록 / $university"
         val adapter =
-            TimeScheduleRecyclerviewAdapter(
+            MainTimeSchedulePageRecyclerviewAdapter(
                 this,
-                timeSchedules
+                timeSchedules,
+                university
             )
         timeschedule_recyclerview.adapter = adapter
-        adapter.notifyDataSetChanged()
-
         timeschedule_recyclerview.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
 
         val layoutManager = LinearLayoutManager(this)
         timeschedule_recyclerview.layoutManager = layoutManager
+
+        registerSemester.setOnClickListener {
+            moveTo(Intent(this, AddSemester::class.java))
+        }
+    }
+    fun moveTo(intent:Intent){
+        intent.putExtra("university", university)
+        startActivity(intent)
     }
 }

@@ -12,6 +12,10 @@ import kotlinx.android.synthetic.main.public_calendar_recyclerview.view.*
 class PublicCalendarRecyclerviewAdapter(val context:Context, val pubCalanders: ArrayList<PublicCalenderData>) :
     RecyclerView.Adapter<PublicCalendarRecyclerviewAdapter.ViewHolder>() {
 
+    init{
+
+    }
+
     override fun getItemCount(): Int = pubCalanders.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -41,12 +45,10 @@ class PublicCalendarRecyclerviewAdapter(val context:Context, val pubCalanders: A
             view.nickname.text = item.nickname
             view.accumulate_num.text = item.accumulate_num
             view.lecture.text = item.lecture
-            view.public_calendar_index.text = item.public_calendar_index
 
             view.nickname.setOnClickListener(listener)
             view.accumulate_num.setOnClickListener(listener)
             view.lecture.setOnClickListener(listener)
-            view.public_calendar_index.setOnClickListener(listener)
         }
     }
 }

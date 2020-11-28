@@ -11,6 +11,7 @@
         android:background="#6298FF">
 
         <TextView
+            android:id="@+id/toolbarTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="댓글 관리"
@@ -22,7 +23,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="10dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <TextView
@@ -30,7 +31,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:text="bubble1010"
             android:textStyle="bold"
             android:textColor="@android:color/black"
             android:textSize="20sp" />
@@ -47,18 +47,46 @@
             android:id="@+id/lecture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="모바일 시스템 응용 (7)"
             android:textStyle="bold"
-            android:layout_marginHorizontal="10dp"
             android:textColor="@android:color/black"
             android:textSize="20sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginBottom="3dp"
+        android:layout_marginTop="7dp"
+        android:weightSum="6">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="신고 시간 : "
+            android:layout_weight="1"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/declareTime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="신고 시간 : "
+            android:layout_weight="2"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            android:textStyle="bold"/>
     </LinearLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@android:color/black"
         android:layout_marginHorizontal="15dp"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="15dp"/>
+
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -67,7 +95,8 @@
         android:layout_marginLeft="15dp"
         android:layout_marginVertical="10dp"
         android:textColor="@android:color/black"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        />
 
     <TextView
         android:id="@+id/declare_reason"
@@ -76,7 +105,8 @@
         android:background="@drawable/contents_textview"
         android:layout_marginHorizontal="15dp"
         android:textColor="@android:color/black"
-        android:layout_marginVertical="10dp" />
+        android:layout_marginBottom="20dp"        android:padding="10dp"
+        />
 
     <TextView
         android:layout_width="wrap_content"
@@ -91,8 +121,8 @@
         android:id="@+id/comment_contents"
         android:layout_width="match_parent"
         android:layout_height="150dp"
+        android:padding="10dp"
         android:background="@drawable/contents_textview"
-        android:layout_marginVertical="10dp"
         android:textColor="@android:color/black"
         android:layout_marginHorizontal="15dp"/>
     <Button
@@ -101,11 +131,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
-        android:text="비공개 처리하기"
-        android:padding="20dp"
-        android:textSize="20sp"
+        android:text="댓글 삭제하기"
+        android:padding="10dp"
+        android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="@android:color/white"
-        android:background="#6298FF"/>
+        android:background="@drawable/button_positive"/>
 
 </LinearLayout>

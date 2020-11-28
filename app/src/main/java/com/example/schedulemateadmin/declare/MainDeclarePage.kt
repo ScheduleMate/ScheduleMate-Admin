@@ -10,10 +10,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.example.schedulemateadmin.R
 import com.example.schedulemateadmin.declare.comment.CommentList
-import com.example.schedulemateadmin.declare.community.CommnunityList
+import com.example.schedulemateadmin.declare.community.CommunityList
 import com.example.schedulemateadmin.declare.publicCalendar.PublicCalenderList
+import com.example.schedulemateadmin.timeschedule.MainTimeSchedulePage
+import kotlinx.android.synthetic.main.main_declare_page.*
 
 class MainDeclarePage : AppCompatActivity(){
+    lateinit var university:String
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         var menuInflater : MenuInflater = getMenuInflater()
         menuInflater.inflate(R.menu.management, menu)
@@ -24,14 +27,9 @@ class MainDeclarePage : AppCompatActivity(){
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.declare ->
-                startActivity(Intent(this, MainDeclarePage::class.java))
+                moveTo(Intent(this, MainDeclarePage::class.java))
             R.id.timeSchedule -> {
-                val intent = Intent()
-                intent.setClass(
-                    this,
-                    com.example.schedulemateadmin.timeschedule.MainTimeSchedulePage::class.java
-                )
-                startActivity(intent)
+                moveTo(Intent(this, MainTimeSchedulePage::class.java))
 
             }
         }
@@ -42,23 +40,30 @@ class MainDeclarePage : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_declare_page)
 
+        university = intent.getStringExtra("university")
+
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         val actionBar = getSupportActionBar()
         actionBar!!.setDisplayShowTitleEnabled(false)
+        toolbarTitle.text = toolbarTitle.text.toString()+ " / $university"
 
         val comment = findViewById<TextView>(R.id.comment)
         val community = findViewById<TextView>(R.id.community)
         val public_calender = findViewById<TextView>(R.id.public_calender)
 
         comment.setOnClickListener {
-            startActivity(Intent(this, CommentList::class.java))
+            moveTo(Intent(this, CommentList::class.java))
         }
         community.setOnClickListener {
-            startActivity(Intent(this, CommnunityList::class.java))
+            moveTo(Intent(this, CommunityList::class.java))
         }
         public_calender.setOnClickListener {
-            startActivity(Intent(this, PublicCalenderList::class.java))
+            moveTo(Intent(this, PublicCalenderList::class.java))
         }
+    }
+    fun moveTo(intent:Intent){
+        intent.putExtra("university", university)
+        startActivity(intent)
     }
 }

@@ -7,20 +7,72 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.schedulemateadmin.R
+import com.example.schedulemateadmin.SelectUniversity
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.community_recyclerview.view.*
 
 class CommunityRecyclerviewAdapter(
     val context: Context,
-    val communities: ArrayList<CommunityData>
+    val communities: ArrayList<CommunityData>,
+    val university: String
 ) :
     RecyclerView.Adapter<CommunityRecyclerviewAdapter.ViewHolder>() {
+    init {
+        val root = FirebaseDatabase.getInstance().reference
+        val communityPath = root.child("$university/declare/community")
+
+        communityPath.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (communities.size != 0)
+                    communities.clear()
+                for (lectureKey in snapshot.children) { // 분반 고유키1,2...
+                    for (community in lectureKey.children) { // community 고유키
+                        var nickname = community.child("writerNickName").value.toString()
+                        var className = community.child("class").value.toString()
+                        var time = community.child("time").value.toString()
+                        var title = community.child("title").value.toString()
+                        var reason = community.child("reason").value.toString()
+                        var lectureKeyData = lectureKey.key.toString()
+                        var communityKeyData = community.key.toString()
+                        communities.add(
+                            CommunityData(
+                                nickname,
+                                "$title($className)",
+                                time,
+                                title,
+                                lectureKeyData,
+                                communityKeyData,
+                                reason
+                            )
+                        )
+
+                    }
+                }
+                notifyDataSetChanged()
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        })
+    }
 
     override fun getItemCount(): Int = communities.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = communities[position]
         val listener = View.OnClickListener {
-            context.startActivity(Intent(context, CommunityContents::class.java))
+            var intent = Intent(context, CommunityContents::class.java)
+            intent.putExtra("nickname", item.nickname)
+            intent.putExtra("lecture", item.lecture)
+            intent.putExtra("title", item.title)
+            intent.putExtra("time", item.time)
+            intent.putExtra("lectureKeyData", item.lectureKey)
+            intent.putExtra("communityKeyData", item.communityKey)
+            intent.putExtra("declareReason", item.reason)
+            intent.putExtra("university", university)
+            context.startActivity(intent)
         }
         holder.apply {
             bind(listener, item)
@@ -43,11 +95,11 @@ class CommunityRecyclerviewAdapter(
         fun bind(listener: View.OnClickListener, item: CommunityData) {
             view.nickname.text = item.nickname
             view.lecture.text = item.lecture
-            view.community_index.text = item.community_index
+            view.time.text = item.time
 
             view.nickname.setOnClickListener(listener)
             view.lecture.setOnClickListener(listener)
-            view.community_index.setOnClickListener(listener)
+            view.time.setOnClickListener(listener)
         }
     }
 }
