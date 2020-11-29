@@ -37,5 +37,6 @@ class AddSemester : AppCompatActivity() {
     fun moveTo(intent:Intent){
         intent.putExtra("university", university)
         startActivity(intent)
+        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
     }
 }

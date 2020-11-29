@@ -28,6 +28,8 @@ import kotlinx.android.synthetic.main.main_declare_page.*
 class CommentContents : AppCompatActivity() {
     private lateinit var root: DatabaseReference
     private lateinit var university: String
+    private lateinit var bool: String
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         var menuInflater: MenuInflater = getMenuInflater()
         menuInflater.inflate(R.menu.management, menu)
@@ -41,7 +43,6 @@ class CommentContents : AppCompatActivity() {
                 moveTo(Intent(this, MainDeclarePage::class.java))
             R.id.timeSchedule -> {
                 moveTo(Intent(this, MainTimeSchedulePage::class.java))
-
             }
         }
         return super.onOptionsItemSelected(item)
@@ -64,6 +65,7 @@ class CommentContents : AppCompatActivity() {
         lecture.text = intent.getStringExtra("lecture")
         declareTime.text = intent.getStringExtra("time")
         declare_reason.text = intent.getStringExtra("declareReason")
+        val writer = intent.getStringExtra("writer")
 
         root = FirebaseDatabase.getInstance().reference
         var commentKeyData = intent.getStringExtra("commentKeyData")
@@ -86,8 +88,21 @@ class CommentContents : AppCompatActivity() {
             popUp.setPositiveButton(
                 "삭제",
                 { dialog: DialogInterface?, which: Int ->
-                    root.child("$university/declare/comment/" + commentKeyData).removeValue()
-                    comment.removeValue()
+                    bool = "false"
+                    //root.child("$university/declare/comment/" + commentKeyData).removeValue()
+                    //comment.removeValue()
+                    root.child("/user/$writer").child("declared")
+                        .addValueEventListener(object : ValueEventListener {
+                            override fun onCancelled(error: DatabaseError) {}
+                            override fun onDataChange(snapshot: DataSnapshot) {
+                                val declared = snapshot.value.toString().toInt()
+                                if (declared < 10 && bool == "false") {
+                                    root.child("/user/$writer").child("declared")
+                                        .setValue((declared + 1).toString())
+                                    bool = "true"
+                                }
+                            }
+                        })
                     moveTo(Intent(this, CommentList::class.java))
                     Toast.makeText(applicationContext, "삭제가 완료되었습니다.", Toast.LENGTH_LONG).show()
                 }
@@ -104,5 +119,6 @@ class CommentContents : AppCompatActivity() {
     fun moveTo(intent: Intent) {
         intent.putExtra("university", university)
         startActivity(intent)
+        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
     }
 }

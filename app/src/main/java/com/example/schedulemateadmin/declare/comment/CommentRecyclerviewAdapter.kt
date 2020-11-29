@@ -20,7 +20,6 @@ class CommentRecyclerviewAdapter(
     val university: String
 ) :
     RecyclerView.Adapter<CommentRecyclerviewAdapter.ViewHolder>() {
-    var data = CommentData("", "", "", "", "", "", "", "")
 
     init {
         var root = FirebaseDatabase.getInstance().reference
@@ -35,12 +34,24 @@ class CommentRecyclerviewAdapter(
                     var nickname = commentKey.child("writerNickName").value.toString()
                     var time = commentKey.child("time").value.toString()
                     var title = commentKey.child("classTitle").value.toString()
-                    var lecture = commentKey.child("class").value.toString()
                     var lectureKey = commentKey.child("classKey").value.toString()
                     var communityKey = commentKey.child("communityKey").value.toString()
                     var reason = commentKey.child("reason").value.toString()
+                    var writer = commentKey.child("writer").value.toString()
 
-                    comments.add(CommentData(nickname, "$title($lecture)", time, reason, commentKeyData, lectureKey, communityKey, title))
+                    comments.add(
+                        CommentData(
+                            nickname,
+                            "$title",
+                            time,
+                            reason,
+                            commentKeyData,
+                            lectureKey,
+                            communityKey,
+                            title,
+                            writer
+                        )
+                    )
                     notifyDataSetChanged()
                 }
             }
@@ -63,6 +74,7 @@ class CommentRecyclerviewAdapter(
             intent.putExtra("declareReason", item.reason)
             intent.putExtra("commentKeyData", item.commentKey)
             intent.putExtra("university", university)
+            intent.putExtra("writer", item.writer)
             context.startActivity(intent)
         }
         holder.apply {

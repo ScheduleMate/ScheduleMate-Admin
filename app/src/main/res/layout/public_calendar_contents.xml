@@ -75,7 +75,7 @@
             android:id="@+id/declareTime"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_weight="4"
             android:text="신고 시간 : "
             android:textColor="@android:color/black"
             android:textSize="12sp"

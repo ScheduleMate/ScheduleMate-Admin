@@ -154,6 +154,7 @@ class AddSubject : AppCompatActivity() {
                 intent.putExtra("title", subject_name.text.toString())
 
                 startActivity(intent)
+                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
             }
             register.setOnClickListener {
                 if (subject_name.text.toString() == "") {
@@ -171,6 +172,7 @@ class AddSubject : AppCompatActivity() {
                     intent.putExtra("semester", semester)
                     intent.putExtra("university", university)
                     startActivity(intent)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
                 }
             }
         } else {  // 등록되어있지 않은 과목일 경우
@@ -194,6 +196,7 @@ class AddSubject : AppCompatActivity() {
                     intent.putExtra("subjectPushKey", newSubjectPushKey)
                     intent.putExtra("title", subject_name.text.toString())
                     startActivity(intent)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
                 }
             }
             register.setOnClickListener {
@@ -211,6 +214,7 @@ class AddSubject : AppCompatActivity() {
                     intent.putExtra("semester", semester)
                     intent.putExtra("university", university)
                     startActivity(intent)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
                 }
             }
         }
@@ -259,6 +263,7 @@ class AddSubject : AppCompatActivity() {
         intent.putExtra("university", university)
         Toast.makeText(this, "변경사항은 자동으로 저장됩니다.", Toast.LENGTH_LONG).show()
         startActivity(intent)
+        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
     }
 
     data class RegisterSubject(

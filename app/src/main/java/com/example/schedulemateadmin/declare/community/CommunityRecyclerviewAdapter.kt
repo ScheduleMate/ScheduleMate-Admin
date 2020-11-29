@@ -31,21 +31,22 @@ class CommunityRecyclerviewAdapter(
                 for (lectureKey in snapshot.children) { // 분반 고유키1,2...
                     for (community in lectureKey.children) { // community 고유키
                         var nickname = community.child("writerNickName").value.toString()
-                        var className = community.child("class").value.toString()
                         var time = community.child("time").value.toString()
                         var title = community.child("classTitle").value.toString()
                         var reason = community.child("reason").value.toString()
+                        var writer = community.child("writer").value.toString()
                         var lectureKeyData = lectureKey.key.toString()
                         var communityKeyData = community.key.toString()
                         communities.add(
                             CommunityData(
                                 nickname,
-                                "$title($className)",
+                                "$title",
                                 time,
                                 title,
                                 lectureKeyData,
                                 communityKeyData,
-                                reason
+                                reason,
+                                writer
                             )
                         )
 
@@ -72,6 +73,7 @@ class CommunityRecyclerviewAdapter(
             intent.putExtra("communityKeyData", item.communityKey)
             intent.putExtra("declareReason", item.reason)
             intent.putExtra("university", university)
+            intent.putExtra("writer", item.writer)
             context.startActivity(intent)
         }
         holder.apply {

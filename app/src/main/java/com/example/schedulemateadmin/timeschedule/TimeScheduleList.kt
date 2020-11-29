@@ -65,5 +65,6 @@ class TimeScheduleList : AppCompatActivity(){
         intent.putExtra("semester", semester)
         intent.putExtra("university", university)
         startActivity(intent)
+        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
     }
 }

@@ -14,7 +14,6 @@ import com.example.schedulemateadmin.timeschedule.MainTimeSchedulePage
 import kotlinx.android.synthetic.main.public_calender_management.*
 
 class PublicScheduleList : AppCompatActivity() {
-    var publicCalendars = ArrayList<PublicScheduleData>()
     lateinit var university: String
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         var menuInflater: MenuInflater = getMenuInflater()
@@ -46,7 +45,7 @@ class PublicScheduleList : AppCompatActivity() {
         actionBar!!.setDisplayShowTitleEnabled(false)
 
         val adapter =
-            PublicScheduleRecyclerviewAdapter(this, publicCalendars, university)
+            PublicScheduleRecyclerviewAdapter(this,  university)
         public_calendar_recyclerview.adapter = adapter
         adapter.notifyDataSetChanged()
 
@@ -57,5 +56,8 @@ class PublicScheduleList : AppCompatActivity() {
     fun moveTo(intent: Intent) {
         intent.putExtra("university", university)
         startActivity(intent)
+        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
     }
+
+
 }

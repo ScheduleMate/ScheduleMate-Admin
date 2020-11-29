@@ -7,5 +7,6 @@ data class CommunityData(
     val title: String,
     val lectureKey: String,
     val communityKey: String,
-    val reason: String
+    val reason: String,
+    val writer: String
 )
