@@ -89,8 +89,8 @@ class CommentContents : AppCompatActivity() {
                 "삭제",
                 { dialog: DialogInterface?, which: Int ->
                     bool = "false"
-                    //root.child("$university/declare/comment/" + commentKeyData).removeValue()
-                    //comment.removeValue()
+                    root.child("$university/declare/comment/" + commentKeyData).removeValue()
+                    comment.removeValue()
                     root.child("/user/$writer").child("declared")
                         .addValueEventListener(object : ValueEventListener {
                             override fun onCancelled(error: DatabaseError) {}

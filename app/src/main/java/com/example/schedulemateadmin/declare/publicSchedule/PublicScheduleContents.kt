@@ -114,8 +114,8 @@ class PublicScheduleContents : AppCompatActivity() {
             popUp.setPositiveButton(
                 "삭제",
                 { dialog: DialogInterface?, which: Int ->
-                    scheduleTypeRef.child(scheduleKey).child("place").removeValue()  // classInfo
-                    root.child("/$university/declare/schedule/$scheduleTypeKey/$scheduleKey").child("classTitle").removeValue()
+                    scheduleTypeRef.child(scheduleKey).removeValue()  // classInfo
+                    root.child("/$university/declare/schedule/$scheduleTypeKey/$scheduleKey").removeValue()
                     if(num.text.toString().toInt() < 10)
                         root.child("/user/$registrant/declared").setValue((num.text.toString().toInt() + 1).toString())
                     moveTo(Intent(this, PublicScheduleList::class.java))

@@ -84,8 +84,8 @@ class CommunityContents : AppCompatActivity(){
                 "삭제",
                 { dialog: DialogInterface?, which: Int ->
                     bool = "false"
-                    //community.removeValue()
-                    //root.child("$university/declare/community/").child(lecture.key.toString()).child(intent.getStringExtra("communityKeyData")).removeValue()
+                    community.removeValue()
+                    root.child("$university/declare/community/").child(lecture.key.toString()).child(intent.getStringExtra("communityKeyData")).removeValue()
                     root.child("/user/$writer").child("declared")
                         .addValueEventListener(object : ValueEventListener {
                             override fun onCancelled(error: DatabaseError) {}
