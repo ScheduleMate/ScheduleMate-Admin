@@ -70,9 +70,24 @@ class CommunityContents : AppCompatActivity(){
         val writer = intent.getStringExtra("writer")
 
         declare_reason.text = declareReason
+        community.addListenerForSingleValueEvent(object :ValueEventListener{
+            override fun onCancelled(error: DatabaseError) {}
+            override fun onDataChange(snapshot: DataSnapshot) {
+                var title = ""
+                var content = ""
+                for(c in snapshot.children){
+                    if(c.key.toString() == "title")
+                        title = c.getValue(String::class.java)!!
+                    else if(c.key.toString() == "content")
+                        content = c.getValue(String::class.java)!!
+                }
+                community_contents.text = "제목 : $title\n\n내용 : $content"
+            }
+        })
         contentPath.addListenerForSingleValueEvent(object :ValueEventListener{
             override fun onCancelled(error: DatabaseError) {}
             override fun onDataChange(snapshot: DataSnapshot) {
+
                 community_contents.text = snapshot.getValue(String::class.java)
             }
         })

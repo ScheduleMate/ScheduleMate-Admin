@@ -38,12 +38,11 @@ class PublicScheduleRecyclerviewAdapter(
                         var declareTime = schedule.child("declareTime").value.toString()
                         var semester = schedule.child("semester").value.toString()
                         var registrant = schedule.child("registrant").value.toString()
-                        sData.nickname
                         FirebaseDatabase.getInstance().reference.child("/user/$registrant/nickName")
                             .addValueEventListener(object : ValueEventListener {
                                 override fun onCancelled(error: DatabaseError) {}
                                 override fun onDataChange(snapshot: DataSnapshot) {
-                                    sData.nickname = snapshot.getValue(String::class.java)!!
+                                    sData.nickname = snapshot.value.toString()
                                     pSchedules.add(
                                         PublicScheduleData(
                                             sData.nickname,
